@@ -166,8 +166,10 @@ angular
         this.fsettings = _.cloneDeep(fsettings);
 
         // fill in default download properties
-        _.forEach(dprops, function(p) {
-          self.settings[p] = self.fsettings[p];
+          _.forEach(dprops, function(p) {
+              self.settings[p] = self.fsettings[p];
+              if (p == "pause")
+                  self.settings[p].val = "true";
           delete self.fsettings[p];
         });
 
