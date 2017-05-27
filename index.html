@@ -1035,6 +1035,10 @@
   <div class="modal-header">
     <button class="close" ng-click="$dismiss()">x</button>
     <h4>{{ 'Choose files to start download for' | translate }}</h4>
+    <div class="pull-right">
+      <button class="btn btn-default" ng-click="$dismiss()">{{ 'Cancel' | translate }}</button>
+      <button class="btn btn-default btn-primary" ng-click="$close()">{{ 'Choose' | translate }}</button>
+    </div>
   </div>
 
   <form class="form-horizontal modal-body">
