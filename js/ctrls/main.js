@@ -587,8 +587,21 @@ function(
 	};
 
 	scope.selectFiles = function(d) {
-		console.log('got back files for the torrent ...');
-		modals.invoke('selectFiles', d.files, function(files) {
+            console.log('got back files for the torrent ...');
+            let sortBySize = (files) => {
+                if (!(files instanceof Array))
+                    return files;
+                // deep copy and sort
+                let ret = [];
+                for (let idx = 0; idx < files.length; ++idx) {
+                    ret.push(files[idx]);
+                }
+                ret.sort((a, b) => {
+                    return b.length - a.length;
+                });
+                return ret;
+            };
+                modals.invoke('selectFiles', sortBySize(d.files), function(files) {
 			var indexes = "";
 			_.forEach(files, function(f) {
 				if (f.selected) {
